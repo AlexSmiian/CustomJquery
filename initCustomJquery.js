@@ -1,65 +1,30 @@
-function $(selector) {
-    let elements = document.querySelectorAll(selector);
+const $ = (selector) => {
+    const elements = document.querySelectorAll(selector);
 
-    // Якщо знайдено один елемент, то повертати його як одиничний
-    if (elements.length === 1) {
-        elements = elements[0];
-    }
+    return elements.length === 1 ? elements[0] : elements;
+};
 
-    // Створюємо об'єкт для додавання методів
-    const api = {
-        addClass(className) {
-            if (elements instanceof Element) {
-                elements.classList.add(className);
-            } else {
-                elements.forEach(el => el.classList.add(className));
-            }
-            return this; // Повертаємо api для можливості ланцюжка
-        },
+const addClass = (element, className) => {
+        element.classList.add(className);
+};
 
-        removeClass(className) {
-            if (elements instanceof Element) {
-                elements.classList.remove(className);
-            } else {
-                elements.forEach(el => el.classList.remove(className));
-            }
-            return this; // Повертаємо api для можливості ланцюжка
-        },
+const removeClass = (element, className) => {
+        element.classList.remove(className);
+};
 
-        on(event, handler) {
-            if (elements instanceof Element) {
-                elements.addEventListener(event, handler);
-            } else {
-                elements.forEach(el => el.addEventListener(event, handler));
-            }
-            return this; // Повертаємо api для можливості ланцюжка
-        }
-    };
-
-    // Якщо це один елемент, додаємо методи і повертаємо його
-    if (elements instanceof Element) {
-        return Object.assign(elements, api);
-    }
-
-    // Якщо це колекція елементів, додаємо методи і повертаємо колекцію
-    elements.forEach(el => Object.assign(el, api));
-
-    return elements;
+const toogleClass = (item,className) => {
+    item.classList.contains(className) ? removeClass(item,className) : addClass(item,className);
 }
 
-// Використання
-const wrapper = $('.item');
+// Exlample
+const activeClass = '--active'
 
-console.log($('.wrapper'));
-console.log($('.item'));
+console.log($('.item-custom'));
+console.log($('#wrapper-id'))
+console.log($('[data-item]'))
 
-// Видаляємо клас після кліку
-wrapper.forEach(item => {
-    item.on('click', function () {
-        item.addClass('--active');
-    });
-
-    item.on('click', function () {
-        item.removeClass('--active');
-    });
-});
+$('.item-custom').forEach(function(item) {
+    item.addEventListener('click',() => {
+        toogleClass(item, activeClass); 
+    })
+})
