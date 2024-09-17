@@ -12,7 +12,7 @@ const removeClass = (element, className) => {
         element.classList.remove(className);
 };
 
-const toogleClass = (item,className) => {
+const toggle = (item,className) => {
     item.classList.contains(className) ? removeClass(item,className) : addClass(item,className);
 }
 
@@ -25,6 +25,6 @@ console.log($('[data-item]'))
 
 $('.item-custom').forEach(function(item) {
     item.addEventListener('click',() => {
-        toogleClass(item, activeClass); 
+        toggle(item, activeClass); 
     })
 })
