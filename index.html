@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible"
+          content="ie=edge">
+    <title>Document</title>
+    <style>
+        .wrapper {
+            display: grid;
+            align-items: center;
+            grid-template-columns: repeat(2,1fr);
+            width: 100%;
+            max-width: 1100px;
+            background-color: coral;
+        }
+
+        .list,
+        .list-custom {
+            display: grid;
+            gap: 20px;
+        }
+        .item,
+        .item-custom{
+            height: 50px;
+            list-style: none;
+        }
+
+        .--active {
+            background-color: blue;
+        }
+    </style>
+</head>
+<body>
+<div class="wrapper">
+    <ul class="list">
+        <li class="item">1</li>
+        <li class="item">2</li>
+        <li class="item">3</li>
+        <li class="item">4</li>
+        <li class="item">5</li>
+    </ul>
+    <ul class="list-custom">
+        <li class="item-custom --active">1</li>
+        <li class="item-custom --active">2</li>
+        <li class="item-custom --active">3</li>
+        <li class="item-custom --active">4</li>
+        <li class="item-custom --active">5</li>
+        <li class="item-custom --active">6</li>
+        <li class="item-custom --active">7</li>
+    </ul>
+</div>
+<script src="initCustomJquery.js"></script>
+</body>
+</html>
